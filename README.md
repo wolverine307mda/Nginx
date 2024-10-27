@@ -1,16 +1,22 @@
 # Nginx
+En este tutorial, aprenderemos a configurar un entorno de servidores web seguros y personalizados usando Nginx y Docker.
+
+Desplegaremos varios sitios virtuales, cada uno con certificados SSL, autenticación de usuarios y páginas de error personalizadas. Al basar el entorno en contenedores Docker, lograremos una gestión modular y eficiente de la infraestructura, facilitando escalabilidad y mantenimiento.
+
+Además, generaremos certificados SSL mediante OpenSSL, protegeremos rutas específicas con autenticación básica y usaremos comandos Docker para construir, iniciar y depurar todo el entorno.
+
 ## CONFIGURACION INICIAL
 Para empezar crearemos la siguiente estructura
 ```
 proyecto_nginx/
-|
+│
 ├── certs/
 │
 ├── conf/
 │   └── nginx.conf
-|
+│
 ├── htpasswd/
-|
+│
 ├── scripts/
 │   └── entrypoints.sh
 │
@@ -21,24 +27,25 @@ proyecto_nginx/
 │
 ├── website/
 │   ├── mario.com/
-│   │     ├── index.html
-│   │     └── error/
-│   │         └── 404.html
-│	│
-│   ├── dedomingo
-│   │     ├── index.html
-│   │     └── error/
-│   │         └── 404.html
-│	│
-|   └── seguro.net
-│         ├── index.html
-│         └── error/
-│             ├── 401.html
-│             ├── 403.html
-│             ├── 404.html
-│             └── 500.html
+│   │   ├── index.html
+│   │   └── error/
+│   │       └── 404.html
+│   │
+│   ├── dedomingo.com/
+│   │   ├── index.html
+│   │   └── error/
+│   │       └── 404.html
+│   │
+│   └── seguro.net/
+│       ├── index.html
+│       └── error/
+│           ├── 401.html
+│           ├── 403.html
+│           ├── 404.html
+│           └── 500.html
 │
 └── docker-compose.yml
+
 ```
 
 Archivo principal de configuración con directivas generales, `nginx.conf`:
