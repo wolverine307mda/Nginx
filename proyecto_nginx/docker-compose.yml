@@ -1,0 +1,14 @@
+services:
+  web:
+    image: ubuntu/nginx
+    container_name: nginx_server
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./sites-available:/etc/nginx/sites-available
+      - ./website:/var/www/html/
+      - ./scripts:/docker-entrypoint.d/
+      - ./htpasswd/.htpasswd:/etc/nginx/.htpasswd
+      - ./certs:/etc/nginx/certs
+    restart: always
