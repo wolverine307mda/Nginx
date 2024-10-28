@@ -339,6 +339,10 @@ Una vez dentro de la terminal de Nginx, iremos a la ruta `/etc/nginx.`
 
 Con el comando `ls -a` vemos los archivos ocultos y podemos ver que existe el archivo `.htpasswd`.
 
+Antes deberemos usar este comando para instalar las caracteristicas de Apache:
+```
+apt update && apt install apache2-utils
+```
 Generamos el archivo con el siguiente comando:
 ```
 htpasswd -c /etc/nginx/.htpasswd mario
